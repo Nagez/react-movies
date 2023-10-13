@@ -11,6 +11,7 @@ import MultipleSelector, { multipleSelectorModel } from "../forms/MultipleSelect
 import { useState } from "react";
 import { genreDTO } from "../Genres/genres.model";
 import { movieTheaterDTO } from "../MovieTheaters/movieTheater.model";
+import TypeAheadActors from "../forms/TypeAheadActors";
 
 export default function MovieForm(props: MovieFormProps) {
 
@@ -67,6 +68,7 @@ export default function MovieForm(props: MovieFormProps) {
                         }}
                     />
 
+                    <TypeAheadActors displayName="actors" actors={[]}/>
                     <Button disabled={formikProps.isSubmitting} type='submit'>Save Changes</Button>
                     <Link className="btn btn-secondary" to="/genres">Cancel</Link>
                 </Form>
