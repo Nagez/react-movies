@@ -6,9 +6,9 @@ export interface actorCreationDTO {
     biography?: string;
 }
 
-export interface actorMovieDTO{
-    id:number;
+export interface actorMovieDTO {
+    id: number;
     name: string;
-    character:string;
-    picture:string;
+    character: string;
+    picture: string;
 }
