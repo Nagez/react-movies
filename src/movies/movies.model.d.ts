@@ -1,3 +1,5 @@
+import { actorCreationDTO, actorMovieDTO } from "../Actors/actors.model";
+
 //d in file name means definition file
 export interface movieDTO {
     id: number;
@@ -14,6 +16,7 @@ export interface movieCreationDTO {
     posterURL?: string;
     genresIds?: number[];
     movieTheatersIds?: number[];
+    actors?: actorMovieDTO[];
 }
 
 export interface landingPageDTO {

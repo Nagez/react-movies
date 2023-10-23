@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { genreDTO } from "../Genres/genres.model";
 import MovieForm from "./MovieForm";
 import { movieTheaterDTO } from "../MovieTheaters/movieTheater.model";
+import { actorMovieDTO } from "../Actors/actors.model";
 
 export default function EditMovie(){
     //const {id}: any = useParams();
@@ -10,6 +11,8 @@ export default function EditMovie(){
 
     const nonSelectedMovieTheaters: movieTheaterDTO[] = [{ id: 2, name: 'agora' }]
     const selectedMovieTheaters: movieTheaterDTO[] = [{ id: 1, name: 'sambil' }]
+
+    const selectedActors: actorMovieDTO[] = [{ id: 3, name: 'miles', character: 'Gerald', picture: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/First_image_of_miles_morales_spider_man.jpg/220px-First_image_of_miles_morales_spider_man.jpg' }]
 
 
     return(
@@ -21,7 +24,7 @@ export default function EditMovie(){
                 nonSelectedGenres={nonSelectedGenres}
                 selectedMovieTheaters={selectedMovieTheaters}
                 nonSelectedMovieTheaters={nonSelectedMovieTheaters}
-                selectedActors={[]}
+                selectedActors={selectedActors}
                 />
         </>
     )

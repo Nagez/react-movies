@@ -1,6 +1,6 @@
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { actorMovieDTO } from '../Actors/actors.model';
-import { ReactElement } from 'react';
+import { useState, ReactElement } from 'react';
 
 export default function TypeAheadActors(props: typeAheadActorsProps) {
 
@@ -11,6 +11,27 @@ export default function TypeAheadActors(props: typeAheadActorsProps) {
     ]
 
     const selected: actorMovieDTO[] = []; //default state that is displayed after an actor was selected
+
+    const [draggedElement, setDraggedElement] = useState<actorMovieDTO | undefined>(undefined);
+
+    function handleDragStart(actor: actorMovieDTO) {
+        setDraggedElement(actor);
+    }
+    function handleDragOver(actor: actorMovieDTO) {
+        if (!draggedElement) {
+            return;
+        }
+        if (actor.id !== draggedElement.id) {
+            //swap the actors in the list
+            const draggedElementIndex = props.actors.findIndex(x => x.id === draggedElement.id);
+            const actorIndex = props.actors.findIndex(x => x.id === actor.id);
+
+            const actors = [...props.actors];
+            actors[actorIndex] = draggedElement;
+            actors[draggedElementIndex] = actor;
+            props.onAdd(actors);
+        }
+    }
 
     return (
         <div className='mb-3'>
@@ -50,7 +71,12 @@ export default function TypeAheadActors(props: typeAheadActorsProps) {
 
             <ul className='list-group'>
                 {props.actors.map(actor =>
-                    <li key={actor.id} className='list-group-item list-group-item-action'>
+                    <li key={actor.id}
+                        draggable={true}
+                        onDragStart={() => handleDragStart(actor)}
+                        onDragOver={() => handleDragOver(actor)}
+                        className='list-group-item list-group-item-action'>
+
                         {props.listUI(actor)}
                         <span className='badge badge-primary badge-pill pointer text-dark'
                             style={{ marginLeft: '0.5rem' }}
