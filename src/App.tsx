@@ -1,6 +1,6 @@
 import './App.css';
 import Menu from './Menu';
-import { BrowserRouter, Route, Switch,Redirect } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import routes from './route-config';
 import configureValidation from './Validations';
 

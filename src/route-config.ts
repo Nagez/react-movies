@@ -37,7 +37,7 @@ const routes = [
     {path: '/movies/edit:id(\\d+)', component: EditMovie},
 
     {path: '/', component: landingPage, exact: true },
-    {path: '/*', component: RedirectToLandingPage} //deafult routing (for non exixting routes) doesnt work
+    {path: '/*', component: RedirectToLandingPage} //deafult routing (for non exixting routes) 
 
 ];
 
